@@ -5,6 +5,11 @@ var requestOptions = {
     redirect: 'follow'
 };
 
+function getVal() {
+    let val = document.querySelector('input').value;
+    console.log(val)
+    return val
+}
 function displayCotation(data) {
     const cotation = document.createElement("p")
     const name = document.createElement("p")
@@ -12,18 +17,17 @@ function displayCotation(data) {
     const venda = document.createElement("p")
     const msg = document.createTextNode("R$1,00 em" + ` ${data.code} ` + "vale:");
 
-
-
     cotation.innerHTML = data.codein;
     name.innerHTML = data.name + `(${data.code})`;
     change.innerHTML = data.pctChange;
-    venda.innerHTML = "R$ " + data.ask // * valor;
+    venda.innerHTML = "R$ " + data.ask;
 
     root.appendChild(cotation)
     root.appendChild(name)
     root.appendChild(change)
     root.appendChild(msg)
     root.appendChild(venda)
+    root.appendChild(document.createTextNode(getVal()))
     root.appendChild(document.createElement("hr"))
 }
 
@@ -53,4 +57,5 @@ function getCotation(){
 }
 
 getCotation()
+getVal()
 
