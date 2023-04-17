@@ -52,9 +52,9 @@ function getCotation(){
     .then(result => result.json())
     .then(processResponse)
     .catch(console.error);
-    setInterval(getCotation, 10000);
 }
 
 getVal()
-getCotation()
+// getCotation()
+setInterval(getCotation, 10000);
 
