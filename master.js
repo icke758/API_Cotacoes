@@ -1,5 +1,5 @@
 const root = document.querySelector("#root")
-// const valor = document.getElementById('textbox_id').value 
+// const valor = document.getElementById('textbox_id').value
 var requestOptions = {
     method: 'GET',
     redirect: 'follow'
@@ -12,7 +12,6 @@ function displayCotation(data) {
     const venda = document.createElement("p")
     const msg = document.createTextNode("R$1,00 em" + ` ${data.code} ` + "vale:");
 
-    
 
 
     cotation.innerHTML = data.codein;
@@ -35,6 +34,8 @@ function processResponse(data) {
     const EUR = data.EURBRL;
     const USD = data.USDBRL;
 
+    root.innerHTML = "";
+
     displayCotation(BTC)
     displayCotation(EUR)
     displayCotation(USD)
@@ -43,12 +44,13 @@ function processResponse(data) {
 
 
 
-function getBTCCotation(){
+function getCotation(){
     fetch("https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL", requestOptions)
     .then(result => result.json())
     .then(processResponse)
     .catch(console.error);
+    setInterval(getCotation, 30000);
 }
 
-getBTCCotation()
+getCotation()
 
