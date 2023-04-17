@@ -7,7 +7,6 @@ var requestOptions = {
 
 function getVal() {
     let val = document.querySelector('input').value;
-    console.log(val)
     return val
 }
 
