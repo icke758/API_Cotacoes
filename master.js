@@ -18,7 +18,7 @@ function displayCotation(data) {
     cotation.innerHTML = data.codein;
     name.innerHTML = data.name + `(${data.code})`;
     change.innerHTML = data.pctChange;
-    venda.innerHTML = data // * valor;
+    venda.innerHTML = "R$ " + data.ask // * valor;
 
     root.appendChild(cotation)
     root.appendChild(name)
