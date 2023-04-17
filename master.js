@@ -1,5 +1,5 @@
 const root = document.querySelector("#root")
-
+// const valor = document.getElementById('textbox_id').value 
 var requestOptions = {
     method: 'GET',
     redirect: 'follow'
@@ -9,14 +9,22 @@ function displayCotation(data) {
     const cotation = document.createElement("p")
     const name = document.createElement("p")
     const change = document.createElement("p")
+    const venda = document.createElement("p")
+    const msg = document.createTextNode("R$1,00 em" + ` ${data.code} ` + "vale:");
 
-    cotation.innerHTML = data.pctChange;
+    
+
+
+    cotation.innerHTML = data.codein;
     name.innerHTML = data.name + `(${data.code})`;
     change.innerHTML = data.pctChange;
+    venda.innerHTML = data // * valor;
 
     root.appendChild(cotation)
     root.appendChild(name)
     root.appendChild(change)
+    root.appendChild(msg)
+    root.appendChild(venda)
     root.appendChild(document.createElement("hr"))
 }
 
@@ -31,17 +39,6 @@ function processResponse(data) {
     displayCotation(EUR)
     displayCotation(USD)
 
-    // const BRL = result.B
-    // /*BTC */
-    // const cotacao = document.getElementById("code");
-    // const name = document.getElementById("name");
-    // const change = document.getElementById("change");
-
-    // cotacao.innerHTML = result['BTCBRL']['code'];
-    // name.innerHTML = result['BTCBRL']['name'];
-    // change.innerHTML = result['BTCBRL']['pctChange'];
-
-    /*Real brasileiro */
 }
 
 
@@ -54,3 +51,4 @@ function getBTCCotation(){
 }
 
 getBTCCotation()
+
