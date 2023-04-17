@@ -10,24 +10,24 @@ function getVal() {
     console.log(val)
     return val
 }
+
 function displayCotation(data) {
     const cotation = document.createElement("p")
     const name = document.createElement("p")
     const change = document.createElement("p")
     const venda = document.createElement("p")
-    const msg = document.createTextNode("R$1,00 em" + ` ${data.code} ` + "vale:");
+    const msg = document.createTextNode("R$" + `${getVal()}` + ",00 em" + ` ${data.code} ` + "vale:");
 
     cotation.innerHTML = data.codein;
     name.innerHTML = data.name + `(${data.code})`;
     change.innerHTML = data.pctChange;
-    venda.innerHTML = "R$ " + data.ask;
+    venda.innerHTML = "R$ " + data.ask *  getVal();
 
     root.appendChild(cotation)
     root.appendChild(name)
     root.appendChild(change)
     root.appendChild(msg)
     root.appendChild(venda)
-    root.appendChild(document.createTextNode(getVal()))
     root.appendChild(document.createElement("hr"))
 }
 
@@ -53,9 +53,9 @@ function getCotation(){
     .then(result => result.json())
     .then(processResponse)
     .catch(console.error);
-    setInterval(getCotation, 30000);
+    setInterval(getCotation, 10000);
 }
 
-getCotation()
 getVal()
+getCotation()
 
