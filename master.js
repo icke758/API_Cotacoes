@@ -15,11 +15,10 @@ function displayCotation(data) {
     const name = document.createElement("p")
     const change = document.createElement("p")
     const venda = document.createElement("p")
-    const msg = document.createTextNode("R$" + `${getVal()}` + ",00 em" + ` ${data.code} ` + "vale:");
+    const msg = document.createTextNode(`${getVal()}` + ",00 em" + ` ${data.code} ` + "vale:");
 
-    cotation.innerHTML = data.codein;
     name.innerHTML = data.name + `(${data.code})`;
-    change.innerHTML = data.pctChange;
+    change.innerHTML = "Variação: " + data.pctChange;
     venda.innerHTML = "R$ " + data.ask *  getVal();
 
     root.appendChild(cotation)
